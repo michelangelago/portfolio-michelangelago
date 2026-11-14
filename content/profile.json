@@ -14,10 +14,6 @@
     {
       "code": "fr",
       "level": "A1"
-    },
-    {
-      "code": "de",
-      "level": "A1"
     }
   ],
   "contacts": [
@@ -66,6 +62,13 @@
         "fr": "Portfolio personnel",
         "de": "Persönliches Portfolio"
       },
+      "link_label": {
+        "pt": "Ver código no GitHub",
+        "en": "View code on GitHub",
+        "fr": "Voir le code sur GitHub",
+        "de": "Code auf GitHub ansehen"
+      },
+      "url": "https://github.com/michelangelago/portfolio-michelangelago",
       "description": {
         "pt": "Este site: um portfólio estático e multilíngue, com visual próximo ao HTML padrão e foco em leitura e manutenção simples. Desenvolvido com Python, HTML e CSS, com implantação planejada em uma VPS da AWS usando nginx.",
         "en": "This website: a static, multilingual portfolio with a design close to default HTML, focused on readability and simple maintenance. Built with Python, HTML, and CSS, with deployment planned on an AWS VPS using nginx.",
