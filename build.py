@@ -8,9 +8,9 @@ from datetime import date
 from html import escape
 from hashlib import sha256
 from pathlib import Path
-from shutil import copytree
+from shutil import copytree, rmtree
 from string import Template
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
@@ -83,13 +83,21 @@ def build():
     github_profile = fetch_github_profile(profile, github_username)
     name = resolve_name(profile, github_username, github_profile)
     template = Template((ROOT / 'templates/page.html').read_text(encoding='utf-8'))
+    backgrounds = [
+        f'/assets/backgrounds/{quote(path.name)}?v={sha256(path.read_bytes()).hexdigest()[:12]}'
+        for path in sorted((ROOT / 'assets/backgrounds').iterdir())
+        if path.is_file()
+        and path.suffix.lower() in {'.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif'}
+    ]
     stylesheet = (ROOT / 'assets/style.css').read_bytes()
-    sidebar_image = (ROOT / 'assets/backgrounds/sidebar.png').read_bytes()
-    sidebar_version = sha256(sidebar_image).hexdigest()[:12].encode('ascii')
-    stylesheet = stylesheet.replace(b'__SIDEBAR_VERSION__', sidebar_version)
+    fallback = f'url("{backgrounds[0]}")' if backgrounds else 'none'
+    stylesheet = stylesheet.replace(b'__SIDEBAR_FALLBACK__', fallback.encode('utf-8'))
     stylesheet_name = f'style.{sha256(stylesheet).hexdigest()[:12]}.css'
     stylesheet_url = f'/assets/{stylesheet_name}'
     theme_script = (ROOT / 'assets/theme.js').read_bytes()
+    theme_script = theme_script.replace(
+        b'__BACKGROUND_IMAGES__', json.dumps(backgrounds).encode('utf-8')
+    )
     theme_script_name = f'theme.{sha256(theme_script).hexdigest()[:12]}.js'
     theme_script_url = f'/assets/{theme_script_name}'
     output = ROOT / 'dist'
@@ -218,6 +226,10 @@ def build():
             encoding='utf-8',
         )
 
+    # Recreate generated backgrounds so source deletions reach the output too.
+    output_backgrounds = output / 'assets/backgrounds'
+    if output_backgrounds.exists():
+        rmtree(output_backgrounds)
     copytree(ROOT / 'assets', output / 'assets', dirs_exist_ok=True)
     (output / 'assets' / stylesheet_name).write_bytes(stylesheet)
     (output / 'assets' / theme_script_name).write_bytes(theme_script)

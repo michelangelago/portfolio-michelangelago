@@ -17,7 +17,11 @@ The switch to the left of the language links toggles between light and dark them
 
 ### Side artwork
 
-The desktop side margins display `assets/backgrounds/sidebar.png`. Replace that file with another PNG using the same filename, run `python3 build.py`, and upload the updated `dist/` directory. No HTML or CSS edits are needed. Each build updates the image's cache version so browsers load the replacement. The artwork stays fixed while scrolling, fills each side margin (cropping as needed), and is hidden on smaller screens to keep the content readable. Replacing a local source file does not change the deployed site until you rebuild and upload.
+Add background images to `assets/backgrounds/` (PNG, JPG/JPEG, WebP, AVIF, or GIF), run `python3 build.py`, and upload the updated `dist/` directory. The build automatically discovers the files; no HTML or CSS edits are needed. Use this source folder, rather than editing `dist/` directly.
+
+To remove an image, delete it from `assets/backgrounds/` and rebuild. The build removes deleted backgrounds from `dist/assets/backgrounds/` as well. Deleting only the generated copy in `dist/` does not remove the source, so the next build restores it. When uploading, synchronize deletions to the server too.
+
+On each page load, a small script randomly selects one image for both side margins. It uses session storage to avoid repeating the previous selection when more than one image is available. If storage is blocked, selection still works but may repeat. Without JavaScript, the first image is shown; an empty folder displays no artwork. Each build updates image cache versions so replacements load correctly. Artwork stays fixed while scrolling, fills each margin (cropping as needed), and is hidden on smaller screens.
 
 Edit `content/pt.json`, `en.json`, `fr.json`, and `de.json` to replace the example introduction and about text in each language. Keep the same keys in every language. The copyright footer uses your display name and the current year at build time.
 
