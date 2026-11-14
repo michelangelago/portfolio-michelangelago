@@ -90,6 +90,16 @@ def build():
         content = read_json(f'content/{locale}.json')
         values = {key: escape(value) for key, value in content.items()}
         values['year'] = year
+        spoken_languages = []
+        for language in profile['spoken_languages']:
+            label = content[f'language_{language["code"]}']
+            level = (
+                content['native_level']
+                if language['level'] == 'native'
+                else language['level']
+            )
+            spoken_languages.append(f'<li>{escape(label)} — {escape(level)}</li>')
+        values['spoken_language_list'] = '<ul>' + ''.join(spoken_languages) + '</ul>'
         if name:
             values['name'] = escape(name)
         values['avatar'] = ''

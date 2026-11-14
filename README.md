@@ -17,13 +17,23 @@ The switch to the left of the language links toggles between a white background 
 
 Edit `content/pt.json`, `en.json`, `fr.json`, and `de.json` to replace the example introduction and about text in each language. Keep the same keys in every language. The copyright footer uses your display name and the current year at build time.
 
-`content/profile.json` holds your shared name, contacts, and projects. For example:
+`content/profile.json` holds your shared name, contacts, projects, and language proficiency.
+
+It also contains `spoken_languages`: edit each language's `level` there using CEFR levels (A1–C2), a range such as `B2–C1`, or `native`. Language names and the native label are translated in each language file.
+
+For example:
 
 ```json
 {
   "name": "Your actual name",
   "github_username": "YOUR_USERNAME",
   "sync_github_name": true,
+  "spoken_languages": [
+    {"code": "pt", "level": "native"},
+    {"code": "en", "level": "B2–C1"},
+    {"code": "fr", "level": "A1"},
+    {"code": "de", "level": "A1"}
+  ],
   "contacts": [{"label": "GitHub", "url": "https://github.com/YOUR_USERNAME"}],
   "projects": [{
     "title": {"pt": "Projeto", "en": "Project", "fr": "Projet", "de": "Projekt"},

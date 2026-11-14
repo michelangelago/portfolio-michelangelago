@@ -2,6 +2,24 @@
   "name": "Michelangelago",
   "github_username": "michelangelago",
   "sync_github_name": true,
+  "spoken_languages": [
+    {
+      "code": "pt",
+      "level": "native"
+    },
+    {
+      "code": "en",
+      "level": "B2–C1"
+    },
+    {
+      "code": "fr",
+      "level": "A1"
+    },
+    {
+      "code": "de",
+      "level": "A1"
+    }
+  ],
   "contacts": [
     {
       "label": "Email: joaogabrieldias9759@gmail.com",
