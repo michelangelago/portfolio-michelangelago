@@ -1,6 +1,6 @@
 # Minimal multilingual portfolio
 
-Static HTML and CSS generated with Python. No JavaScript, application server, or external Python dependencies. Portuguese, English, French, and German share one template.
+Static HTML and CSS generated with Python, with a small JavaScript file for theme persistence. No application server or external Python dependencies. Portuguese, English, French, and German share one template.
 
 ## Build and preview
 
@@ -11,9 +11,13 @@ python3 -m http.server 8000 --directory dist
 
 Open http://localhost:8000. The local root lists languages; nginx redirects the root based on the browser's first language, defaulting to Portuguese.
 
-The switch to the left of the language links toggles between a white background and a black background. It uses a native checkbox and CSS `:has()`, with a translated accessible label, and can be operated with the keyboard. The choice applies to the current page and is not saved across navigation or language changes. No JavaScript or browser storage is used.
+The switch to the left of the language links toggles between light and dark themes, with dark mode as the default. A small script applies the saved theme before rendering and stores changes in `localStorage` under `portfolio-theme`. The choice persists across reloads and language changes on the same origin. If storage is blocked, the switch still works for the current page. With JavaScript disabled, dark mode is the default and the CSS switch works without persistence.
 
 ## Content
+
+### Side artwork
+
+The desktop side margins display `assets/backgrounds/sidebar.png`. Replace that file with another PNG using the same filename, run `python3 build.py`, and upload the updated `dist/` directory. No HTML or CSS edits are needed. Each build updates the image's cache version so browsers load the replacement. The artwork stays fixed while scrolling, fills each side margin (cropping as needed), and is hidden on smaller screens to keep the content readable. Replacing a local source file does not change the deployed site until you rebuild and upload.
 
 Edit `content/pt.json`, `en.json`, `fr.json`, and `de.json` to replace the example introduction and about text in each language. Keep the same keys in every language. The copyright footer uses your display name and the current year at build time.
 

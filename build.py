@@ -6,6 +6,7 @@ import re
 import sys
 from datetime import date
 from html import escape
+from hashlib import sha256
 from pathlib import Path
 from shutil import copytree
 from string import Template
@@ -82,14 +83,42 @@ def build():
     github_profile = fetch_github_profile(profile, github_username)
     name = resolve_name(profile, github_username, github_profile)
     template = Template((ROOT / 'templates/page.html').read_text(encoding='utf-8'))
+    stylesheet = (ROOT / 'assets/style.css').read_bytes()
+    sidebar_image = (ROOT / 'assets/backgrounds/sidebar.png').read_bytes()
+    sidebar_version = sha256(sidebar_image).hexdigest()[:12].encode('ascii')
+    stylesheet = stylesheet.replace(b'__SIDEBAR_VERSION__', sidebar_version)
+    stylesheet_name = f'style.{sha256(stylesheet).hexdigest()[:12]}.css'
+    stylesheet_url = f'/assets/{stylesheet_name}'
+    theme_script = (ROOT / 'assets/theme.js').read_bytes()
+    theme_script_name = f'theme.{sha256(theme_script).hexdigest()[:12]}.js'
+    theme_script_url = f'/assets/{theme_script_name}'
     output = ROOT / 'dist'
     output.mkdir(exist_ok=True)
     year = str(date.today().year)
+    skill_icons = {
+        path.stem: path.read_text(encoding='utf-8').strip()
+        for path in (ROOT / 'assets/icons').glob('*.svg')
+    }
 
     for locale in LOCALES:
         content = read_json(f'content/{locale}.json')
         values = {key: escape(value) for key, value in content.items()}
+        values['about_paragraphs'] = '\n        '.join(
+            f'<p>{escape(paragraph.strip())}</p>'
+            for paragraph in content['about'].split('\n\n')
+            if paragraph.strip()
+        )
         values['year'] = year
+        values['locale'] = locale
+        values['stylesheet_url'] = stylesheet_url
+        values['theme_script_url'] = theme_script_url
+        skills = []
+        for category, tools in profile.get('skills', {}).items():
+            label = escape(content[f'skill_{category}'])
+            items = escape(', '.join(tools))
+            icon = skill_icons.get(category, '')
+            skills.append(f'<dt>{icon}<span>{label}</span></dt><dd>{items}</dd>')
+        values['skill_list'] = '\n          '.join(skills)
         spoken_languages = []
         for language in profile['spoken_languages']:
             label = content[f'language_{language["code"]}']
@@ -190,10 +219,14 @@ def build():
         )
 
     copytree(ROOT / 'assets', output / 'assets', dirs_exist_ok=True)
+    (output / 'assets' / stylesheet_name).write_bytes(stylesheet)
+    (output / 'assets' / theme_script_name).write_bytes(theme_script)
     (output / 'index.html').write_text(
         '<!doctype html><html lang="pt-BR"><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1">'
-        '<title>Idiomas / Languages</title><link rel="stylesheet" href="/assets/style.css">'
+        '<title>Idiomas / Languages</title>'
+        f'<script src="{theme_script_url}"></script>'
+        f'<link rel="stylesheet" href="{stylesheet_url}">'
         '<h1>Idiomas / Languages</h1><nav>'
         + ' '.join(
             f'<p><a href="/{code}/" lang="{code}">{label}</a></p>'
