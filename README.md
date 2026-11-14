@@ -63,4 +63,3 @@ Name changes require a rebuild and upload because the name is part of the genera
 Generate `dist/` locally or in CI, then upload its contents to `/var/www/portfolio/` on your VPS. Python is only needed to build, not to serve. Use `deploy/nginx.conf` as a starting configuration, replace the domain, and configure HTTPS before public launch. Allow ports 80 and 443 in AWS and the server firewall. Check configuration with `sudo nginx -t` before reloading nginx.
 
 For deployment without partial updates, upload each build into a new release directory and atomically switch the symlink nginx serves. No AWS resources have been created or changed by this project.
-# portfolio-michelangelago

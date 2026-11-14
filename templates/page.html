@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="$html_lang">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="$intro">
+    <title>$name — $portfolio</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="alternate" hreflang="pt-BR" href="/pt/">
+    <link rel="alternate" hreflang="en" href="/en/">
+    <link rel="alternate" hreflang="fr" href="/fr/">
+    <link rel="alternate" hreflang="de" href="/de/">
+  </head>
+  <body>
+    <a class="skip" href="#main">$skip</a>
+
+    <header>
+      <div class="header-controls">
+        <label class="theme-switch" title="$dark_mode">
+          <input type="checkbox" id="dark-mode" role="switch" autocomplete="off">
+          <span aria-hidden="true">◐</span>
+          <span class="sr-only">$dark_mode</span>
+        </label>
+        <nav class="language-switcher" aria-label="$languages_label">
+          $language_links
+        </nav>
+      </div>
+
+      $avatar
+      <h1>$name</h1>
+      <p>$intro</p>
+    </header>
+
+    <main id="main">
+      <section aria-labelledby="about">
+        <h2 id="about">$about_title</h2>
+        <p>$about</p>
+      </section>
+
+      <section aria-labelledby="projects">
+        <h2 id="projects">$projects_title</h2>
+        $project_list
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact">$contact_title</h2>
+        $contact_list
+      </section>
+    </main>
+
+    <footer>
+      <p>© $year $name</p>
+    </footer>
+  </body>
+</html>

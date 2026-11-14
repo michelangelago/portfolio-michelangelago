@@ -1,0 +1,17 @@
+{
+  "html_lang": "en",
+  "name": "Your name",
+  "avatar_alt": "GitHub profile photo of {username}",
+  "intro": "A short introduction to you and your work.",
+  "about_title": "About",
+  "about": "Write a little about your background, your interests, and what you do.",
+  "projects_title": "Projects",
+  "project_title": "Project name",
+  "project_description": "Describe the project, your contribution, and the technologies used.",
+  "contact_title": "Contact",
+  "contact_empty": "Add your contact links in content/profile.json.",
+  "languages_label": "Languages",
+  "dark_mode": "Dark mode",
+  "skip": "Skip to content",
+  "portfolio": "Personal portfolio"
+}

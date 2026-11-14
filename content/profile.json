@@ -1,0 +1,93 @@
+{
+  "name": "Michelangelago",
+  "github_username": "michelangelago",
+  "sync_github_name": true,
+  "contacts": [
+    {
+      "label": "Email: joaogabrieldias9759@gmail.com",
+      "url": "mailto:joaogabrieldias9759@gmail.com"
+    },
+    {
+      "label": "GitHub: michelangelago",
+      "url": "https://github.com/michelangelago"
+    },
+    {
+      "label": "YouTube: @michelangelago",
+      "url": "https://www.youtube.com/@michelangelago"
+    },
+    {
+      "label": "Discord: michelangelago"
+    }
+  ],
+  "projects": [
+    {
+      "title": {
+        "pt": "Manger",
+        "en": "Manger",
+        "fr": "Manger",
+        "de": "Manger"
+      },
+      "description": {
+        "pt": "Bot do Telegram para registrar alimentos consumidos, acompanhar calorias e definir metas calóricas diárias. Desenvolvido com PHP, Nutgram e SQLite, com catálogo compartilhado de alimentos, registro de porções em gramas e resumos diários, semanais, mensais e anuais.",
+        "en": "A Telegram bot for logging food intake, tracking calories, and setting daily calorie goals. Built with PHP, Nutgram, and SQLite, with a shared food catalog, portions recorded in grams, and daily, weekly, monthly, and yearly summaries.",
+        "fr": "Un bot Telegram pour enregistrer les aliments consommés, suivre les calories et définir un objectif calorique quotidien. Développé avec PHP, Nutgram et SQLite, il propose un catalogue alimentaire partagé, la saisie des portions en grammes et des bilans quotidiens, hebdomadaires, mensuels et annuels.",
+        "de": "Ein Telegram-Bot zum Erfassen verzehrter Lebensmittel, Zählen von Kalorien und Festlegen täglicher Kalorienziele. Entwickelt mit PHP, Nutgram und SQLite, mit einem gemeinsamen Lebensmittelkatalog, Portionsangaben in Gramm sowie Tages-, Wochen-, Monats- und Jahresübersichten."
+      },
+      "link_label": {
+        "pt": "Ver código no GitHub",
+        "en": "View code on GitHub",
+        "fr": "Voir le code sur GitHub",
+        "de": "Code auf GitHub ansehen"
+      },
+      "url": "https://github.com/michelangelago/manger"
+    },
+    {
+      "title": {
+        "pt": "Portfólio pessoal",
+        "en": "Personal portfolio",
+        "fr": "Portfolio personnel",
+        "de": "Persönliches Portfolio"
+      },
+      "description": {
+        "pt": "Este site: um portfólio estático e multilíngue, com visual próximo ao HTML padrão e foco em leitura e manutenção simples. Desenvolvido com Python, HTML e CSS, com implantação planejada em uma VPS da AWS usando nginx.",
+        "en": "This website: a static, multilingual portfolio with a design close to default HTML, focused on readability and simple maintenance. Built with Python, HTML, and CSS, with deployment planned on an AWS VPS using nginx.",
+        "fr": "Ce site : un portfolio statique et multilingue, au design proche du HTML par défaut, conçu pour être lisible et facile à maintenir. Développé avec Python, HTML et CSS, avec un déploiement prévu sur un VPS AWS utilisant nginx.",
+        "de": "Diese Website: ein statisches, mehrsprachiges Portfolio mit einem Design nahe am Standard-HTML, das auf Lesbarkeit und einfache Pflege ausgelegt ist. Entwickelt mit Python, HTML und CSS; die Bereitstellung auf einem AWS-VPS mit nginx ist geplant."
+      },
+      "details": {
+        "pt": [
+          "Geração de páginas com a biblioteca padrão do Python: um template HTML compartilhado e arquivos JSON de conteúdo produzem os arquivos estáticos, sem dependências externas de Python ou JavaScript.",
+          "Versões em português, inglês, francês e alemão, com páginas próprias em /pt/, /en/, /fr/ e /de/ e troca de idioma por links.",
+          "Layout responsivo em uma coluna, fontes nativas do navegador, títulos semânticos, foco visível para navegação por teclado e link para pular ao conteúdo. Cada página declara seu idioma, título, descrição e versões alternativas.",
+          "Foto de perfil circular carregada diretamente do GitHub. O nome público é atualizado durante o build, com um nome local de reserva caso a API esteja indisponível.",
+          "Textos de apresentação e Sobre editáveis por idioma; projetos com descrições e detalhes traduzidos; contatos compartilhados entre as quatro versões.",
+          "Configuração nginx preparada para servir os arquivos estáticos e redirecionar a raiz conforme o primeiro idioma do navegador, com português como padrão. Na hospedagem planejada na AWS, Python será necessário apenas para gerar as páginas; a configuração do domínio e do HTTPS ainda está pendente."
+        ],
+        "en": [
+          "Page generation uses Python's standard library: one shared HTML template and JSON content files produce the static output, without external Python dependencies or JavaScript.",
+          "Portuguese, English, French, and German versions have their own pages at /pt/, /en/, /fr/, and /de/, with ordinary links for switching languages.",
+          "A responsive, single-column layout uses native browser fonts, semantic headings, visible keyboard focus, and a skip link. Each page declares its language, title, description, and alternate language versions.",
+          "The circular profile photo loads directly from GitHub. The public display name refreshes during the build, with a locally configured name as a fallback if the API is unavailable.",
+          "Introduction and About text are editable per language; projects have translated descriptions and details; contact information is shared across all four versions.",
+          "The nginx configuration is prepared to serve static files and redirect the root according to the browser's first language, defaulting to Portuguese. For the planned AWS hosting, Python will only be needed to generate pages; domain and HTTPS setup are still pending."
+        ],
+        "fr": [
+          "Les pages sont générées avec la bibliothèque standard de Python : un modèle HTML commun et des fichiers JSON de contenu produisent les fichiers statiques, sans dépendance Python externe ni JavaScript.",
+          "Les versions portugaise, anglaise, française et allemande disposent de leurs propres pages à /pt/, /en/, /fr/ et /de/, avec des liens classiques pour changer de langue.",
+          "La mise en page adaptative sur une colonne utilise les polices natives du navigateur, des titres sémantiques, un indicateur de focus visible au clavier et un lien d'accès direct au contenu. Chaque page déclare sa langue, son titre, sa description et ses versions linguistiques alternatives.",
+          "La photo de profil ronde est chargée directement depuis GitHub. Le nom public est actualisé lors de la génération, avec un nom défini localement comme solution de repli si l'API est indisponible.",
+          "Les textes de présentation et de la rubrique À propos sont modifiables par langue ; les projets disposent de descriptions et de détails traduits ; les coordonnées sont communes aux quatre versions.",
+          "La configuration nginx est prête à servir les fichiers statiques et à rediriger la racine selon la première langue du navigateur, avec le portugais par défaut. Pour l'hébergement prévu sur AWS, Python servira uniquement à générer les pages ; la configuration du domaine et de HTTPS reste à effectuer."
+        ],
+        "de": [
+          "Die Seitengenerierung nutzt die Python-Standardbibliothek: Eine gemeinsame HTML-Vorlage und JSON-Inhaltsdateien erzeugen die statischen Dateien, ohne externe Python-Abhängigkeiten oder JavaScript.",
+          "Portugiesisch, Englisch, Französisch und Deutsch haben eigene Seiten unter /pt/, /en/, /fr/ und /de/. Der Sprachwechsel erfolgt über normale Links.",
+          "Das responsive, einspaltige Layout verwendet Standardschriften des Browsers, semantische Überschriften, eine sichtbare Fokusmarkierung für die Tastaturnavigation und einen Sprunglink zum Inhalt. Jede Seite enthält Angaben zu Sprache, Titel, Beschreibung und alternativen Sprachversionen.",
+          "Das runde Profilbild wird direkt von GitHub geladen. Der öffentliche Anzeigename wird beim Build aktualisiert; bei nicht erreichbarer API wird ein lokal hinterlegter Name verwendet.",
+          "Die Einleitung und der Text unter Über mich lassen sich für jede Sprache bearbeiten. Projekte enthalten übersetzte Beschreibungen und Details; die Kontaktdaten werden in allen vier Versionen gemeinsam verwendet.",
+          "Die nginx-Konfiguration ist für die Auslieferung statischer Dateien und die Weiterleitung der Startadresse anhand der ersten Browsersprache vorbereitet; Portugiesisch ist der Standard. Beim geplanten AWS-Hosting wird Python nur zur Seitengenerierung benötigt. Die Einrichtung von Domain und HTTPS steht noch aus."
+        ]
+      }
+    }
+  ]
+}
