@@ -285,25 +285,22 @@ footer {
     position: fixed;
     top: 0;
     bottom: 0;
+    width: calc((100vw - 52rem) / 2);
+    background-image: var(--sidebar-image, __SIDEBAR_FALLBACK__);
+    background-size: cover;
+    background-repeat: no-repeat;
     pointer-events: none;
     z-index: -1;
   }
 
   body::before {
     left: 0;
-    right: 0;
-    background-image: var(--sidebar-image, __SIDEBAR_FALLBACK__);
-    background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    z-index: -2;
   }
 
   body::after {
-    left: 50%;
-    width: 52rem;
-    transform: translateX(-50%);
-    background: var(--page-bg);
+    right: 0;
+    background-position: right center;
   }
 }
 
